@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nathaly\\Desktop\\CadastroPessoa\\CadastroPessoa.csproj",
+      "projectUniqueName": "C:\\Users\\Nathaly\\Desktop\\CadastroPessoa\\UC12\\SA2\\CadastroPessoa.csproj",
       "projectName": "CadastroPessoa",
-      "projectPath": "C:\\Users\\Nathaly\\Desktop\\CadastroPessoa\\CadastroPessoa.csproj",
+      "projectPath": "C:\\Users\\Nathaly\\Desktop\\CadastroPessoa\\UC12\\SA2\\CadastroPessoa.csproj",
       "packagesPath": "C:\\Users\\Nathaly\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nathaly\\Desktop\\CadastroPessoa\\obj\\",
+      "outputPath": "C:\\Users\\Nathaly\\Desktop\\CadastroPessoa\\UC12\\SA2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nathaly\\AppData\\Roaming\\NuGet\\NuGet.Config",

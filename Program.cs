@@ -13,5 +13,5 @@ PessoaFisica novaPf = new PessoaFisica();
 
 // Console.WriteLine($"Text");  //cwl + tabe
 
-novaPf.ValidarDataNascimento(new DateTime(2000,01,01));
+novaPf.ValidarDataNascimento("01/01/2000");
 

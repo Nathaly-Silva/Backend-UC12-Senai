@@ -2,9 +2,7 @@
 //Console.WriteLine("Hello, World!");
 
 
-using CadastroPessoa.Classes;
 
-PessoaFisica novaPf = new PessoaFisica();
 
 //novaPF.nome = "Nathaly";
 
@@ -13,5 +11,17 @@ PessoaFisica novaPf = new PessoaFisica();
 
 // Console.WriteLine($"Text");  //cwl + tabe
 
-novaPf.ValidarDataNascimento("01/01/2000");
+using CadastroPessoa.Classes;
+
+PessoaFisica novaPf = new PessoaFisica();
+Endereco novoEnd = new Endereco();
+
+novaPf.nome = "Nathaly";
+novaPf.dataNascimento = "01/01/2000";
+novaPf.cpf = "123456789";
+novaPf.rendimento = 15000.5f; //float
+
+novoEnd.logradouro = "";
+
+
 

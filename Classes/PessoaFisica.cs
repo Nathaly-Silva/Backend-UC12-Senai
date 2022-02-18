@@ -7,29 +7,30 @@ namespace CadastroPessoa.Classes
 
         public string ?cpf { get; set; }
 
-        public DateTime ?dataNascimento { get; set; }
+        public string ?dataNascimento { get; set; }
         
         
 
 
-        public bool ValidarDataNascimento(DateTime dataNasci)
-        {
-            DateTime dataAtual = DateTime.Today;
+//        public bool ValidarDataNascimento(DateTime dataNasci)
+//        {
+//           DateTime dataAtual = DateTime.Today;
+//
+//            double anos = (dataAtual - dataNasci).TotalDays / 365;
 
-            double anos = (dataAtual - dataNasci).TotalDays / 365;
-
-            if (anos >= 18)
-            {
-                return true;
-            }
-            return false;
-        }
-        
+//            if (anos >= 18)
+//            {
+//                return true;
+//           }
+//            return false;
+//        }
+//        
         public bool ValidarDataNascimento(string dataNasc)
         {
             DateTime dataConvertida;
             if (DateTime.TryParse(dataNasc, out dataConvertida))
             {
+               
 
                 DateTime dataAtual = DateTime.Today;
 
@@ -53,6 +54,10 @@ namespace CadastroPessoa.Classes
             throw new NotImplementedException(); //fica na tela para não dar erro, temporario//
          }
 
+        public bool ValidarDataNascimento(DateTime dataNasc)
+        {
+            throw new NotImplementedException();
+        }
     }     
 }
    

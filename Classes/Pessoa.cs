@@ -13,3 +13,4 @@ namespace CadastroPessoa.Classes
 
         public abstract float PagarImposto(float rendimento);
     }
+} 

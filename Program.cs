@@ -12,6 +12,7 @@
 // Console.WriteLine($"Text");  //cwl + tabe
 
 using CadastroPessoa.Classes;
+using SA2.Classes;
 
 PessoaFisica novaPf = new PessoaFisica();
 Endereco novoEnd = new Endereco();

@@ -1,4 +1,5 @@
 using CadastroPessoa.Interfaces;
+using SA2.Classes;
 
 namespace CadastroPessoa.Classes
 {

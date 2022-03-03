@@ -54,3 +54,32 @@ Maior de idade: {dataValida}
 //Endereço: {novaPf.endereco.logradouro}, {novaPf.endereco.numero}
 //Maior de idade: {metodoPf.ValidarDataNascimento(novaPf.dataNascimento)} metodo dentro do Console para aparecer true or false
 //");
+
+
+PessoaJuridica metodoPj = new PessoaJuridica();
+
+PessoaJuridica novaPj = new PessoaJuridica();
+Endereco novoEndPj = new Endereco();
+
+novaPj.nome = "Nome Pj";
+novaPj.cnpj = "00.000.000/0001-00";
+novaPj.razaoSocial = "razão Social Pj";
+novaPj.rendimento = 8000.5f;
+
+novoEndPj.logradouro = "Alameda Barão de Lima";
+novoEndPj.numero = 519;
+novoEndPj.complemento = "SENAI Informatica";
+novoEndPj.endComercial = true;
+
+novaPj.endereco = novoEndPj;
+ 
+Console.WriteLine(@$"
+Nome: {novaPj.nome}
+Razão Social: {novaPj.razaoSocial}
+CNPJ: {novaPj.cnpj}
+CNPJ Válido: {metodoPj.ValidarCnpj(novaPj.cnpj)}");
+
+
+
+//Console.WriteLine($"{metodoPj.ValidarCnpj("00.000.000/0001-00")}"); //Console.WriteLine($"{metodoPj.ValidarCnpj("00000000000100")}");//
+

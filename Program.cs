@@ -18,6 +18,7 @@ Console.WriteLine(@$"
 
 BarraCarregamento("Carregando ", 500);
 
+List<PessoaFisica> listaPf = new List<PessoaFisica>();
 
 string? opcao;
 do          // não sei quantas vezes vou repetir o codigo
@@ -40,21 +41,136 @@ do          // não sei quantas vezes vou repetir o codigo
         case "1":       // não armazenou como inteiro, pois pode digital por exemplo uma letra e "quebrar" o codigo, colocando como string ele cai em defaul
 
             PessoaFisica metodoPf = new PessoaFisica(); //chamar metodo
+            
+            
+            
+            string? opcaoPf;
+            do
+            {
+                Console.Clear();    //limpa o terminal, a parte do Bem vindo! e carregando... é limpa do terminal
+    Console.WriteLine(@$"
+------------------------------------
+|       Selecione uma das opções       |
+---------------------------------------|
+|      1 - Cadastrar Pessoa Física     | 
+|      2 - Mostrar Pessoa Fisica       | 
+|      0 - Voltar ao menu anterior     |
+|______________________________________|
+");
 
-            PessoaFisica novaPf = new PessoaFisica();
-            Endereco novoEnd = new Endereco();
+                opcaoPf = Console.ReadLine();
 
-            novaPf.nome = "Nathaly";
-            novaPf.dataNascimento = "01/01/2000";
-            novaPf.cpf = "123456789";
-            novaPf.rendimento = 15000.5f; //float
+                switch (opcaoPf)
+                {
+                    case "1" :
+                        PessoaFisica novaPf = new PessoaFisica();
+                        Endereco novoEnd = new Endereco();
 
-            novoEnd.logradouro = "Alameda Barão de Lima";
-            novoEnd.numero = 519;
-            novoEnd.complemento = "SENAI Informatica";
-            novoEnd.endComercial = true;
+                        Console.WriteLine($"Digite o nome da pessoa física que deseja cadastrar");
+                        novaPf.nome = Console.ReadLine();
 
-            novaPf.endereco = novoEnd;
+                        bool dataValida;
+                        do
+                        {
+
+                            Console.WriteLine($"Digite a data de nascimento Ex: DD/MM/AAAA");
+                            string? dataNasc = Console.ReadLine();
+
+                            dataValida = metodoPf.ValidarDataNascimento(dataNasc);
+                            if(dataValida)
+                            {
+                                novaPf.dataNascimento = dataNasc;
+                            }else 
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine($"Data digitada invalida, por favor digite uma data valida");
+                                Console.ResetColor();
+                            }
+                        } while (dataValida == false);   
+                        
+                        
+                        Console.WriteLine($"Digite o numero do CPF");
+                        novaPf.cpf = Console.ReadLine();
+
+                        Console.WriteLine($"Digite o rendimento mensal (digite somente os numeros)");
+                        novaPf.rendimento = float.Parse(Console.ReadLine());
+
+                        
+                        Console.WriteLine($"Digite o logradouro");
+                        novoEnd.logradouro = (Console.ReadLine());
+
+                        Console.WriteLine($"Digite o numero");
+                        novoEnd.numero = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine($"Digite o complemento (Aperte ENTER para vazio)");
+                        novoEnd.complemento = Console.ReadLine();
+                        
+                        Console.WriteLine($"Este endereço é comercial? S/N");
+                        string endCom = Console.ReadLine().ToUpper();
+
+                        if (endCom == "S")
+                        {
+                            novoEnd.endComercial = true;
+                        }else
+                        {
+                            novoEnd.endComercial = false;
+                        }
+
+
+                        novaPf.endereco = novoEnd;
+
+                        listaPf.Add(novaPf);
+
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine($"Cadastro realizado com sucesso");
+                        Thread.Sleep(3000);
+                        Console.ResetColor();
+
+                        break;
+
+                    case "2" :
+
+                        Console.Clear();
+
+                        if(listaPf.Count > 0)
+                        {
+
+                            foreach(PessoaFisica cadaPessoa in listaPf)
+                            {
+   Console.Clear();
+                        Console.WriteLine(@$"
+Nome: {cadaPessoa.nome}
+Endereço: {cadaPessoa.endereco.logradouro}, {cadaPessoa.endereco.numero}
+Data de Nascimento: {cadaPessoa.dataNascimento}  
+Taxa de imposto a ser paga é: {metodoPf.PagarImposto(cadaPessoa.rendimento).ToString("C")}  
+"); 
+//"C" moeda R$  - ? "Sim" : "Não" = if se true "sim" se for false "não" IF ternário 
+
+            Console.WriteLine($"Aperte 'Enter' para continuar");
+            Console.ReadLine();
+
+                            }
+
+                        }else
+                        {
+                           Console.WriteLine($"Lista vazia!");
+                           Thread.Sleep(3000);
+                            
+                        }
+
+                        break;
+
+                    case "0" :
+                        break;
+
+                    default:
+                        Console.Clear();
+                        Console.WriteLine($"Opçao inválida, por favor digite uma opção válida");
+                        Thread.Sleep(2000);
+                        break;            
+                }
+
+            } while (opcaoPf != "0");
 
             //bool dataValida = metodoPf.ValidarDataNascimento(novaPf.dataNascimento);
             //dentro de datavalida esta escrito se é true or False
@@ -69,17 +185,6 @@ do          // não sei quantas vezes vou repetir o codigo
             //Maior de idade: {dataValida}
             //");
             //validar data de nascimento, outro exemplo caso seja um projeto pequeno não vai usar o bool , colocar metodo em maior idade
-
-
-            Console.Clear();
-            Console.WriteLine(@$"
-Nome: {novaPf.nome}
-Endereço: {novaPf.endereco.logradouro}, {novaPf.endereco.numero}
-Maior de idade: {metodoPf.ValidarDataNascimento(novaPf.dataNascimento)} 
-"); //metodo dentro do Console para aparecer true or false
-            
-            Console.WriteLine($"Aperte 'Enter' para continuar");
-            Console.ReadLine();
 
             break;
 

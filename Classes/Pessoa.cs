@@ -6,11 +6,11 @@ namespace CadastroPessoa.Classes
     public abstract class Pessoa : IPessoa
     {
 
-        public string ?nome { get; set;}
+        public string? nome { get; set;}
 
         public Endereco? endereco { get; set; }
 
-        public float ?rendimento { get; set; }
+        public float rendimento { get; set; } // ?rendimento ? não tinha valor atribuido 
 
         public abstract float PagarImposto(float rendimento);
     }

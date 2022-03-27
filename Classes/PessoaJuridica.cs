@@ -11,7 +11,7 @@ namespace CadastroPessoa.Classes
         public string ?razaoSocial { get; set; }
         
             
-
+        public string caminho { get; private set;} = "Database/PessoaJuridica.csv";
         public override float PagarImposto(float rendimento)
         {
             if (rendimento < 3000)
@@ -56,5 +56,40 @@ namespace CadastroPessoa.Classes
 
             return false;
         }
+
+
+        public void Inserir (PessoaJuridica pj){
+            
+            VerificarPastaArquivo(caminho);
+
+            string[] pjString = {$"{pj.nome},{pj.cnpj},{pj.razaoSocial}"};
+
+            File.AppendAllLines(caminho, pjString);
+        
+        }
+
+        public List<PessoaJuridica> Ler(){
+
+            List<PessoaJuridica> listaPj = new List<PessoaJuridica>();
+
+            string[] linhas = File.ReadAllLines(caminho); // meu arrei é linhas
+
+            foreach (string cadaLinha in linhas)      //foreach ler cada item do arrei, da lista cochetes=arrei é uma lista
+            {
+                string[] atributos = cadaLinha.Split(",");   //split retorna um arrei de string //divisor entre as strings é a ,
+                
+                PessoaJuridica cadaPj = new PessoaJuridica();
+                
+                cadaPj.nome = atributos[0];
+                cadaPj.cnpj = atributos[1];
+                cadaPj.razaoSocial = atributos[2];
+
+                listaPj.Add(cadaPj);          
+            }
+
+            return listaPj;
+
+        }
+
     }
 }

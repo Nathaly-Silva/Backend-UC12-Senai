@@ -13,5 +13,21 @@ namespace CadastroPessoa.Classes
         public float rendimento { get; set; } // ?rendimento ? não tinha valor atribuido 
 
         public abstract float PagarImposto(float rendimento);
+    
+        public void VerificarPastaArquivo(string caminho){
+            
+            string pasta = caminho.Split("/")[0];
+            
+            if (!Directory.Exists(pasta))
+            {
+                Directory.CreateDirectory(pasta);
+            }
+
+            if(!File.Exists(caminho))    //! é o mesmo que  == false
+            {
+                File.Create(caminho);
+            }
+        }    
+    
     }
 } 

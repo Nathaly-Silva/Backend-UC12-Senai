@@ -23,9 +23,9 @@ namespace CadastroPessoa.Classes
                 Directory.CreateDirectory(pasta);
             }
 
-            if(!File.Exists(caminho))    //! é o mesmo que  == false
+            if (!File.Exists(caminho))    //! é o mesmo que  == false
             {
-                File.Create(caminho);
+               using (File.Create(caminho)){}
             }
         }    
     

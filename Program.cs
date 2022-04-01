@@ -41,9 +41,7 @@ do          // não sei quantas vezes vou repetir o codigo
         case "1":       // não armazenou como inteiro, pois pode digital por exemplo uma letra e "quebrar" o codigo, colocando como string ele cai em defaul
 
             PessoaFisica metodoPf = new PessoaFisica(); //chamar metodo
-            
-            
-            
+
             string? opcaoPf;
             do
             {
@@ -116,7 +114,6 @@ do          // não sei quantas vezes vou repetir o codigo
                             novoEnd.endComercial = false;
                         }
 
-
                         novaPf.endereco = novoEnd;
 
                         //listaPf.Add(novaPf);
@@ -126,11 +123,11 @@ do          // não sei quantas vezes vou repetir o codigo
                         //sw.Close();  //para fechar o arquivo - Importante fechar sempre
                         // Ou mais usual - proximo metodo    
                         
-                        using (StreamWriter sw = new StreamWriter($"{novaPf.nome}.txt"))
-                        {
-                            sw.WriteLine($"{novaPf.nome}{novaPf.endereco.numero}");
+                        //using (StreamWriter sw = new StreamWriter($"{novaPf.nome}.txt"))
+                        //{
+                           // sw.WriteLine($"{novaPf.nome}{novaPf.endereco.numero}");
                                                               
-                        }
+                        //}
                         //faz o filtro do que desjar
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -218,6 +215,7 @@ Taxa de imposto a ser paga é: {metodoPf.PagarImposto(cadaPessoa.rendimento).ToS
         case "2":
 
             PessoaJuridica metodoPj = new PessoaJuridica();
+List<PessoaJuridica> listaPj = new List<PessoaJuridica>();
 
             string? opcaoPj;
             do{
@@ -249,7 +247,7 @@ Taxa de imposto a ser paga é: {metodoPf.PagarImposto(cadaPessoa.rendimento).ToS
                         novaPj.nome = Console.ReadLine();
 
                         Console.WriteLine($"Digite o rendimento mensal (digite somente os numeros)");
-                        novaPj.rendimento = float.Parse(Console.ReadLine())
+                        novaPj.rendimento = float.Parse(Console.ReadLine());
                         
                         Console.WriteLine($"Digite o logradouro");
                         novoEnd.logradouro = (Console.ReadLine());
@@ -271,7 +269,11 @@ Taxa de imposto a ser paga é: {metodoPf.PagarImposto(cadaPessoa.rendimento).ToS
                             novoEnd.endComercial = false;
                         }
 
+                        novaPj.endereco = novoEnd;
+                        
+                        
                         listaPj.Add(novaPj);
+                        metodoPj.Inserir(novaPj);
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine($"Cadastro realizado com sucesso");
@@ -283,16 +285,12 @@ Taxa de imposto a ser paga é: {metodoPf.PagarImposto(cadaPessoa.rendimento).ToS
 
                         Console.Clear();
 
-                        List<PessoaJuridica> listaPj = metodoPj.Ler();
-
+                        
                         if(listaPj.Count > 0)
                         {
 
                             foreach(PessoaJuridica cadaEmpresa in listaPj)
                             {    
-                        
-                        
-                        metodoPj.Inserir(novaPj);
                         
                         
     Console.Clear();                

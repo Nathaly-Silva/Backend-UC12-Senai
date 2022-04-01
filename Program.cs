@@ -270,10 +270,12 @@ List<PessoaJuridica> listaPj = new List<PessoaJuridica>();
                         }
 
                         novaPj.endereco = novoEnd;
-                        
-                        
+                                                
                         listaPj.Add(novaPj);
                         metodoPj.Inserir(novaPj);
+                        List<PessoaJuridica> listaPj = metodoPj.Ler();
+
+                        forech (PessoaJuridica cadaItem in listaPj)
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine($"Cadastro realizado com sucesso");
@@ -289,29 +291,24 @@ List<PessoaJuridica> listaPj = new List<PessoaJuridica>();
                         if(listaPj.Count > 0)
                         {
 
-                            foreach(PessoaJuridica cadaEmpresa in listaPj)
+                            foreach(PessoaJuridica cadaItem in listaPj)
                             {    
+                                Console.Clear();                
+                                Console.WriteLine(@$"
+                Nome: {noovaPj.nome}
+                Endereço: {noovaPj.endereco.logradouro}, {noovaPj.endereco.numero}
+                CNPJ: {noovaPj.cnpj}  
+                Taxa de imposto a ser paga é: {metodoPj.PagarImposto(noovaPj.rendimento).ToString("C")}  
+                ");  
                         
-                        
-    Console.Clear();                
-                        Console.WriteLine(@$"
-Nome: {cadaEmpresa.nome}
-Endereço: {cadaEmpresa.endereco.logradouro}, {cadaEmpresa.endereco.numero}
-CNPJ: {cadaEmpresa.cnpj}  
-Taxa de imposto a ser paga é: {metodoPj.PagarImposto(cadaEmpresa.rendimento).ToString("C")}  
-");  
-                        
-
-            Console.WriteLine($"Aperte 'Enter' para continuar");
-            Console.ReadLine();
-
+                                Console.WriteLine($"Aperte 'Enter' para continuar");
+                                Console.ReadLine();
                             }
 
                         }else
                         {
                            Console.WriteLine($"Lista vazia!");
-                           Thread.Sleep(3000);
-                            
+                           Thread.Sleep(3000);                           
                         }
 
                         break;

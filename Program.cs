@@ -368,6 +368,8 @@ Taxa de imposto a ser paga é: {metodoPf.PagarImposto(cadaPessoa.rendimento).ToS
             Thread.Sleep(2000);
             break;
         }
+} while (opcao != "0");        
+
 
 
 
